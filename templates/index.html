@@ -1,6 +1,10 @@
 <html>
   <body>
-    <h1>Hello From First Template!!</h1>
-    Hi
+    <h1>{{name}}</h1>
+    <ul>
+      {% for item in news_items %}
+      <li>{{ item.title }}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

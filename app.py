@@ -1,6 +1,8 @@
-import time
+from datetime import datetime
 
 from flask import Flask, render_template
+
+app = Flask(__name__)
 
 news_items = {
     1: {"id": 1, "title": "COVID-19 update", "body": "This is a news on COVID-19"},
@@ -15,21 +17,15 @@ news_items = {
         "body": "Python 4 will be out soon.... this is FAKE",
     },
 }
-app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    name = "Siraphat"
-    t = time.time()
+    name = "Somchai"
+    time = datetime.now()
     return render_template(
-        "index.html", name=name, time=t, news_items=news_items.values()
+        "index.html", name=name, time=time, news_items=news_items.values()
     )
-
-
-@app.route("/hello")
-def hello():
-    return "<h1>TEST</h1>"
 
 
 @app.route("/news/<id>/")

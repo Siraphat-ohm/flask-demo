@@ -5,6 +5,7 @@
 #main_news_list .news-items {
   border: 1px solid gray;
   padding: 5px;
+  font-size: 20px;
 }
 
 h1 {

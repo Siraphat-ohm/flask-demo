@@ -1,14 +1,8 @@
 from datetime import datetime
 
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
-
-
-def new_news_item(title, body):
-    new_id = max(news_items.keys()) + 1
-    return {"id": new_id, "title": title, "body": body}
-
 
 news_items = {
     1: {"id": 1, "title": "COVID-19 update", "body": "This is a news on COVID-19"},
@@ -45,8 +39,13 @@ def show_news_item(id):
     )
 
 
+def new_news_item(title, body):
+    new_id = max(news_items.keys()) + 1
+    return {"id": new_id, "title": title, "body": body}
+
+
 @app.route("/news/create/", methods=["POST"])
 def create_news_item():
     item = new_news_item(request.form["title"], request.form["body"])
     news_items[item["id"]] = item
-    return ""
+    return redirect(url_for("index"))

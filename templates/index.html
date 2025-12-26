@@ -9,6 +9,7 @@
         </li>
       {% endfor %}
     </ul> 
+
     <form action="{{ url_for('create_news_item') }}" method="POST">
       Title: <input name="title"/><br />
       Body: <textarea name="body"></textarea><br />
